@@ -57,6 +57,7 @@ func main() {
 		reader := strings.NewReader(string(body))
 		err = info.Parse(reader, nil, nil)
 
+		w.Header().Set("Access-Control-Allow-Origin", "*")
 		fmt.Fprintln(w, info)
 
 		db, err := sql.Open("sqlite3", "db/graveyard.db")
